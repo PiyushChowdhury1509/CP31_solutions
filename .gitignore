@@ -1,0 +1,5 @@
+# Ignore all .exe files
+*.exe
+
+# Ignore .cph folder (used by Competitive Programmer's Helper)
+.cph/
