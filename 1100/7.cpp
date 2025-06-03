@@ -55,7 +55,7 @@ int main() {
     cin>>t;
     while (t--) {
         int n;
-        ll x;
+        ll  x;        int z;
         cin>>n>>x;
         vector<ll>nums(n);
         for(int i=0;i<n;i++) cin>>nums[i];
