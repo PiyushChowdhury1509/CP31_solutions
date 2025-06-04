@@ -54,26 +54,22 @@ int main() {
     int t ;  
     cin>>t;
     while (t--) {
-        int n;
-        cin>>n;
-        vector<ll>nums(n);
-        for(int i=0;i<n;i++) cin>>nums[i];
-        vector<int>v;
-        for(int i=0;i<n;i++){
-            if(nums[i]) v.push_back(i);
-        }
-        if(v.size()==0) cout<<0<<endl;
-        else{
-            bool flag=false;
-            for(int i=1;i<v.size();i++){
-                if(v[i]-v[i-1]>1){
-                    flag=true;
-                    break;
+        string s;
+        cin>>s;
+        stack<char>st;
+        int ans=0;
+        for(int i=0;i<s.length();i++){
+            if(st.empty()) st.push(s[i]);
+            else{
+                if(st.top()!=s[i]){
+                    st.pop();
+                    ans++;
                 }
+                else st.push(s[i]);
             }
-            if(flag) cout<<2<<endl;
-            else cout<<1<<endl;
         }
+        if(ans%2) cout<<"DA"<<endl;
+        else cout<<"NET"<<endl;
     }
 
     return 0;

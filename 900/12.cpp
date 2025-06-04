@@ -58,13 +58,15 @@ int main() {
         cin>>n;
         vector<int>nums(n);
         for(int i=0;i<n;i++) cin>>nums[i];
-        int minm=INT_MAX;
-        int maxm=INT_MIN;
-        for(int i=0;i<n;i++){
-            minm=min(nums[i],minm);
-            maxm=max(nums[i],maxm);
-        }
-        cout<<maxm-minm<<endl;
+        int ans=INT_MIN;
+        ans=max({nums[n-1]-nums[0],nums[1]-nums[0],nums[n-2]-nums[n-1]});
+        for(int i=1;i<n;i++) ans=max(ans,nums[i-1]-nums[i]);
+        int maxm=INT_MIN,minm=INT_MAX;
+        for(int i=1;i<n;i++) maxm=max(maxm,nums[i]);
+        for(int i=0;i<n-1;i++) minm=min(minm,nums[i]);
+        ans=max({ans,maxm-nums[0],nums[n-1]-minm});
+        if(n==1) cout<<0<<endl;
+        else cout<<ans<<endl;
     }
 
     return 0;

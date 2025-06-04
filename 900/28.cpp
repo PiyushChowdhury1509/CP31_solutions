@@ -51,29 +51,19 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t ;  
-    cin>>t;
+    int t ;
+    cin>>t;  
     while (t--) {
-        int n;
-        cin>>n;
-        vector<ll>nums(n);
-        for(int i=0;i<n;i++) cin>>nums[i];
-        vector<int>v;
-        for(int i=0;i<n;i++){
-            if(nums[i]) v.push_back(i);
-        }
-        if(v.size()==0) cout<<0<<endl;
-        else{
-            bool flag=false;
-            for(int i=1;i<v.size();i++){
-                if(v[i]-v[i-1]>1){
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag) cout<<2<<endl;
-            else cout<<1<<endl;
-        }
+        int n,k;
+        cin>>n>>k;
+        vector<ll>nums(n*k);
+        for(int i=0;i<n*k;i++) cin>>nums[i];
+        int pivot=ceil((float)n/2.0);
+        int leftuseless=(pivot-1)*k;
+        int rightuseless=n-pivot;
+        ll sum=0;
+        for(int i=leftuseless;i<n*k;i+=rightuseless+1) sum+=nums[i];
+        cout<<sum<<endl;
     }
 
     return 0;
