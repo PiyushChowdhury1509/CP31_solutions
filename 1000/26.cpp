@@ -51,9 +51,14 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t ;
+    cin>>t;  
     while (t--) {
-        
+        ll x,y,k;
+        cin>>x>>y>>k;
+        ll a=((y*k)+k-1)/(x-1);   
+        if(((y*k)+k-1)%(x-1)!=0) a++; 
+        cout<<a+k<<endl;
     }
 
     return 0;

@@ -51,9 +51,37 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t = 1;
+    cin>>t;  
     while (t--) {
-        
+        int n,p;
+        cin>>n>>p;
+        vector<int>a(n),b(n);
+        for(int i=0;i<n;i++) cin>>a[i];
+        for(int i=0;i<n;i++) cin>>b[i];
+        vector<pair<int,int>>v;
+        for(int i=0;i<n;i++){
+            v.push_back({b[i],a[i]});
+        }
+        sort(all(v));
+        ll cost=p;
+        ll shared=1;
+        for(auto it:v){
+            ll canshare=it.second;
+            ll sharingcost=it.first;
+            if(sharingcost>=p) break;
+            if(shared+canshare>n){
+                cost+=(n-shared)*sharingcost;
+                shared=n;
+                break;
+            }
+            else{
+                cost+=canshare*sharingcost;
+                shared+=canshare;
+            }
+        }
+        cost+=(n-shared)*p;
+        cout<<cost<<endl;
     }
 
     return 0;

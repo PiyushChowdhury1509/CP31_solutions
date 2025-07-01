@@ -53,7 +53,25 @@ int main() {
 
     int t = 1;  
     while (t--) {
-        
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int minm=n-1;
+        pair<int,int>idx{-1,-1};
+        for(int i=n-2;i>=0;i--){
+            if(s[i]>s[minm]){
+                idx.first=i;
+                idx.second=minm;
+                break;
+            }
+            if(s[minm]>s[i]) minm=i;
+        }
+        if(idx.first==-1) cout<<"NO";
+        else{
+            cout<<"YES"<<endl;
+            cout<<idx.first+1<<" "<<idx.second+1;
+        }
     }
 
     return 0;

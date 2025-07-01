@@ -51,9 +51,33 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t ;
+    cin>>t;  
     while (t--) {
-        
+        ll a,b;
+        cin>>a>>b;
+        if(b>32){
+            int ans=0;
+            while(a>0){
+                a/=b;
+                ans++;
+            }
+            cout<<ans<<endl;
+        }
+        else{
+            ll c=max((ll)2,b);
+            int ans=INT_MAX;
+            for(int i=c;i<=32;i++){
+                int count=i-b;
+                ll copy=a;
+                while(copy>0){
+                    copy/=i;
+                    count++;
+                }
+                ans=min(ans,count);
+            }
+            cout<<ans<<endl;
+        }
     }
 
     return 0;

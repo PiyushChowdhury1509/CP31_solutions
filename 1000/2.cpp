@@ -59,9 +59,17 @@ int main() {
         vector<int>nums(n);
         for(int i=0;i<n;i++) cin>>nums[i];
         int ans=INT_MAX;
+        int odd=0;
         for(int i=0;i<n;i++){
-            int mul=ceil(1.0*nums[i]/k*1.0);
-            ans=min((mul*k)-nums[i],ans);
+            if(nums[i]%2) odd++;
+            int num=ceil(nums[i]*1.0/k*1.0);
+            int mul=num*k-nums[i];
+            ans=min(ans,mul);
+        }
+        if(k==4){
+            if(n-odd>=2) ans=0;
+            else if(n-odd==1) ans=min(ans,1);
+            else ans=min(ans,2);
         }
         cout<<ans<<endl;
     }

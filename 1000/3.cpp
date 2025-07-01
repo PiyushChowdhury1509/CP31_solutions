@@ -51,9 +51,33 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t = 1;
+    cin>>t;  
     while (t--) {
-        
+        ll n,p;
+        cin>>n>>p;
+        vector<ll>a(n),b(n);
+        for(ll i=0;i<n;i++) cin>>a[i];
+        for(ll i=0;i<n;i++) cin>>b[i];
+        vector<pair<ll,ll>>v;
+        for(ll i=0;i<n;i++){
+            v.push_back({b[i],a[i]});
+        }
+        sort(all(v));
+        ll idx=0;
+        ll cost=p;
+        ll prev=0;
+        ll i=1;
+        while(i<n){
+            if(v[idx].first<p){
+                ll people=min(v[idx].second,n-i);
+                i=i+min(v[idx].second,n-i);
+                cost+=((ll)v[idx].first*(ll)people);
+                idx++;
+            } else break;
+        }
+        if(i<n) cost+=((ll)(n-i)*(ll)p);
+        cout<<cost<<endl;
     }
 
     return 0;

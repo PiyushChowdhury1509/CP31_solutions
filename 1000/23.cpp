@@ -51,9 +51,30 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t = 1;
+    cin>>t;  
     while (t--) {
-        
+        int d;
+        cin>>d;
+        int ans=INT_MAX;
+        int low=6,high=1e6;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int prev=1,count=1;
+            bool flag=true;
+            for(int i=2;i<=mid;i++){
+                if(mid%i==0){
+                    if(i-prev<d) flag=false;
+                    prev=i;
+                    count++;
+                }
+            }
+            if(flag && count>=4){
+                ans=min(ans,mid);
+                high=mid-1;
+            } else low=mid+1;
+        }
+        cout<<ans<<endl;
     }
 
     return 0;

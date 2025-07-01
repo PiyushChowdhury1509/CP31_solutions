@@ -52,8 +52,27 @@ int main() {
     fast_io;
 
     int t = 1;  
+    cin>>t;
     while (t--) {
-        
+        string s;
+        cin>>s;
+        int count0=0,count1=0;
+        for(int i=0;i<s.length();i++){
+            if(s[i]=='0') count0++;
+            else count1++;
+        }
+        int i=0;
+        while(i<s.length()){
+            if(s[i]=='0'){
+                if(count1>0) count1--;
+                else break;
+            } else{
+                if(count0>0) count0--;
+                else break;
+            }
+            i++;
+        }
+        cout<<s.length()-i<<endl;
     }
 
     return 0;

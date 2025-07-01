@@ -51,9 +51,32 @@ ll mod_exp(ll a, ll b, ll m = MOD) {
 int main() {
     fast_io;
 
-    int t = 1;  
+    int t ;
+    cin>>t;  
     while (t--) {
-        
+        ll a,b;
+        cin>>a>>b;
+        ll x=min(a,b);
+        ll y=max(a,b);
+        if(y%x) cout<<-1<<endl;
+        else{
+            ll num=y/x;
+            int count=0;
+            while(num>1 && num%8==0){
+                num/=8;
+                count++;
+            }
+            while(num>1 && num%4==0){
+                num/=4;
+                count++;
+            }
+            while(num>1 && num%2==0){
+                num/=2;
+                count++;
+            }
+            if(num!=1) cout<<-1<<endl;
+            else cout<<count<<endl;
+        }
     }
 
     return 0;
